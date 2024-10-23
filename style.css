@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 1.5px solid #e0e0e0;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #0d5fa3;
+    margin-right: auto;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+#logoutButton {
+    background-color: #0d5fa3;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Increased padding */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px; /* Increased font size */
+    margin-left: 15px;
+}
+
+#logoutButton:hover {
+    background-color: #094779;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.user-info, .course-info{
+    background-color: #ffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    flex-basis: 48%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-info img, .course-info img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.course-logo{
+    margin-top: 30px ;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.detail {
+    font-size: 20px;
+    color: #1d5a55;
+}
+
+.courses {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.course-card {
+    background-color: #ffff;
+    border-radius: 10px;
+    width: 30%;
+    height: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-card:hover{
+    border:2px groove #d5d0d0;
+}

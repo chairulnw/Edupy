@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edupy Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Edupy</div>
+        <span class="text">My profile</span>
+        <button id="logoutButton">Logout</button>
+    </header>
+
+    <main>
+        <h1>Welcome, <span id="userName">Name</span></h1>
+        <p class="text">Happy learning!</p>
+
+        <div class="dashboard">
+            <div class="user-info">
+                <img src="assets/olga-woman.svg">
+                <p class="text">Name</p>
+                <p class="detail">Lesson completed: <span id="lessonsCompleted">0</span></p>
+                <p class="detail">Total score: <span id="totalScore">0</span></p>
+            </div>
+
+            <div class="course-info">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" class="course-logo">
+                <h2>Programming with Python</h2>
+            </div>
+        </div>
+
+        <h2>Available Courses</h2>
+        <div class="courses">
+            <a href="course1.html" class="course-card">
+                <img src="assets/victor-male.svg">
+            </a>
+            <a href="course1.html" class="course-card">
+                <img src="assets/victor-male.svg">
+            </a>
+            <a href="course1.html" class="course-card">
+                <img src="assets/victor-male.svg">
+            </a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
