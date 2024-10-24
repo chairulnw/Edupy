@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edupy Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Edupy</title>
+    <link rel="icon" type="image/x-icon" href="/assets/Ep.svg">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="logo">Edupy</div>
-        <span class="text">My profile</span>
         <button id="logoutButton">Logout</button>
     </header>
 
     <main>
-        <h1>Welcome, <span id="userName">Name</span></h1>
+        <h1>Welcome, <span id="userName">Chairul</span></h1>
         <p class="text">Happy learning!</p>
 
         <div class="dashboard">
             <div class="user-info">
                 <img src="assets/olga-woman.svg">
-                <p class="text">Name</p>
+                <p class="text">Chairul</p>
                 <p class="detail">Lesson completed: <span id="lessonsCompleted">0</span></p>
-                <p class="detail">Total score: <span id="totalScore">0</span></p>
             </div>
 
             <div class="course-info">
@@ -33,18 +32,76 @@
 
         <h2>Available Courses</h2>
         <div class="courses">
-            <a href="course1.html" class="course-card">
-                <img src="assets/victor-male.svg">
+            <a href="course1.html?course=variable" class="course-card"> 
+                <p>Variable</p>
+                <img src="assets/variable.png">
             </a>
-            <a href="course1.html" class="course-card">
-                <img src="assets/victor-male.svg">
+            <a href="course1.html?course=conditional" class="course-card"> 
+                <p>Conditional</p>
+                <img src="assets/condition.png">
             </a>
-            <a href="course1.html" class="course-card">
-                <img src="assets/victor-male.svg">
+            <a href="course1.html?course=loop" class="course-card"> 
+                <p>Looping</p>
+                <img src="assets/loop.png">
             </a>
         </div>
     </main>
 
     <script src="script.js"></script>
+    <script>
+    function displayCompletedLessons() {
+        let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || [];
+        document.getElementById('lessonsCompleted').textContent = completedCourses.length;
+    }
+
+    // Fungsi untuk menandai kursus yang telah diselesaikan
+    function markCompletedCourses() {
+        let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || [];
+        
+        completedCourses.forEach(courseId => {
+            let courseLink = document.querySelector(`a[href*="course=${courseId}"]`);
+            if (courseLink) {
+                courseLink.classList.add('completed');
+            }
+        });
+    }
+
+    // Fungsi untuk menghapus tanda 'completed' dari kursus
+    function removeCompletedCourseMarks() {
+        // Seleksi semua elemen kursus
+        const courseCards = document.querySelectorAll('.course-card');
+
+        // Hapus kelas 'completed' dari setiap elemen
+        courseCards.forEach(card => {
+            card.classList.remove('completed');
+        });
+    }
+
+    // Fungsi logout untuk mereset data kursus yang telah diselesaikan
+    function logout() {
+        // Hapus data 'completedCourses' dari Local Storage
+        localStorage.removeItem('completedCourses');
+
+        // Perbarui tampilan jumlah kursus yang telah diselesaikan
+        displayCompletedLessons();
+
+        // Hapus tanda 'completed' pada kursus di halaman utama
+        removeCompletedCourseMarks();
+
+        // Opsional: Refresh halaman untuk memastikan tampilan terbaru
+        // location.reload();
+    }
+
+    // Menambahkan event listener pada tombol logout
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        logout();
+    });
+
+    // Panggil fungsi saat halaman selesai dimuat
+    window.onload = function() {
+        displayCompletedLessons();
+        markCompletedCourses();
+    };
+    </script>
 </body>
 </html>
