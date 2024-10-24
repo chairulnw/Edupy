@@ -147,3 +147,22 @@ pre {
 .back-btn:hover {
     background-color: #45a049;
 }
+
+.completion-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Mencenterkan konten secara horizontal */
+    justify-content: center; /* Mencenterkan konten secara vertikal jika diperlukan */
+    text-align: center; /* Mencenterkan teks di dalam elemen */
+}
+
+/* Gaya untuk gambar dalam pesan penyelesaian */
+.completion-message .completion-image {
+    width: calc(45% - 20px);
+    margin-bottom: 60px;
+}
+
+/* Gaya untuk tombol back-btn jika perlu penyesuaian */
+.completion-message .back-btn {
+    margin-top: 20px;
+}
