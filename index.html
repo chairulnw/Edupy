@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="logo">Edupy</div>
-        <button id="logoutButton">Logout</button>
+        <button id="resetButton">Reset</button>
     </header>
 
     <main>
@@ -54,7 +54,6 @@
         document.getElementById('lessonsCompleted').textContent = completedCourses.length;
     }
 
-    // Fungsi untuk menandai kursus yang telah diselesaikan
     function markCompletedCourses() {
         let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || [];
         
@@ -66,38 +65,23 @@
         });
     }
 
-    // Fungsi untuk menghapus tanda 'completed' dari kursus
     function removeCompletedCourseMarks() {
-        // Seleksi semua elemen kursus
         const courseCards = document.querySelectorAll('.course-card');
-
-        // Hapus kelas 'completed' dari setiap elemen
         courseCards.forEach(card => {
             card.classList.remove('completed');
         });
     }
 
-    // Fungsi logout untuk mereset data kursus yang telah diselesaikan
-    function logout() {
-        // Hapus data 'completedCourses' dari Local Storage
+    function reset() {
         localStorage.removeItem('completedCourses');
-
-        // Perbarui tampilan jumlah kursus yang telah diselesaikan
         displayCompletedLessons();
-
-        // Hapus tanda 'completed' pada kursus di halaman utama
         removeCompletedCourseMarks();
-
-        // Opsional: Refresh halaman untuk memastikan tampilan terbaru
-        // location.reload();
     }
 
-    // Menambahkan event listener pada tombol logout
-    document.getElementById('logoutButton').addEventListener('click', function() {
-        logout();
+    document.getElementById('resetButton').addEventListener('click', function() {
+        reset();
     });
 
-    // Panggil fungsi saat halaman selesai dimuat
     window.onload = function() {
         displayCompletedLessons();
         markCompletedCourses();

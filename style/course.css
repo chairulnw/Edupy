@@ -1,4 +1,4 @@
-/* Kode CSS asli tetap tidak berubah untuk desktop */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,6 @@ body {
     background-color: #e6f0ff;
 }
 
-/* Hover effect */
 .options label:hover {
     border-color: #007bff;
 }
@@ -153,28 +152,22 @@ pre {
 .completion-message {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Mencenterkan konten secara horizontal */
-    justify-content: center; /* Mencenterkan konten secara vertikal jika diperlukan */
-    text-align: center; /* Mencenterkan teks di dalam elemen */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-/* Gaya untuk gambar dalam pesan penyelesaian */
 .completion-message .completion-image {
     width: calc(45% - 20px);
     margin-bottom: 60px;
 }
 
-/* Gaya untuk tombol back-btn jika perlu penyesuaian */
 .completion-message .back-btn {
     margin-top: 20px;
 }
 
-/* Tambahkan media queries untuk responsivitas */
-
-/* Penyesuaian untuk layar lebih kecil dari 768px */
+/* media queries untuk responsivitas */
 @media (max-width: 768px) {
-
-    /* Hapus tinggi tetap dan pengaturan flex pada body */
     body {
         display: block;
         justify-content: flex-start;
@@ -182,7 +175,6 @@ pre {
         height: auto;
     }
 
-    /* Sesuaikan .quiz-container */
     .quiz-container {
         width: 100%;
         padding: 0 20px;
@@ -190,13 +182,11 @@ pre {
         margin-top: 20px;
     }
 
-    /* Sesuaikan .progress-bar */
     .progress-bar {
         width: 80%;
         margin: 0 auto;
     }
 
-    /* Sesuaikan tombol #check-btn */
     #check-btn {
         position: relative;
         bottom: auto;
@@ -206,13 +196,11 @@ pre {
         margin: 20px auto;
     }
 
-    /* Sesuaikan gambar pada .completion-message */
     .completion-message .completion-image {
         width: 80%;
         margin-bottom: 40px;
     }
 
-    /* Sesuaikan ukuran font */
     .quiz-container h2 {
         font-size: 1.5rem;
     }
@@ -221,38 +209,31 @@ pre {
         font-size: 14px;
     }
 
-    /* Sesuaikan label opsi */
     .options label {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    /* Kurangi padding pada .header */
     .header {
         padding: 20px;
     }
 }
 
-/* Penyesuaian untuk layar lebih kecil dari 480px */
+/* media 480px */
 @media (max-width: 480px) {
-
-    /* Sesuaikan .quiz-container */
     .quiz-container {
         padding: 0 10px;
     }
 
-    /* Sesuaikan .progress-bar */
     .progress-bar {
         width: 100%;
     }
 
-    /* Sesuaikan gambar pada .completion-message */
     .completion-message .completion-image {
         width: 100%;
         margin-bottom: 30px;
     }
 
-    /* Sesuaikan ukuran font */
     .quiz-container h2 {
         font-size: 1.25rem;
     }
