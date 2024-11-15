@@ -28,7 +28,8 @@
         </dialog> -->
         <div class="dashboard">
             <div class="user-info">
-                <h1><span id="name"></span></h1>
+                <img src="assets/olga-woman.svg">
+                <h1><span id="username"></span></h1>
                 <p class="detail">Lesson completed: <span id="lessonsCompleted"></span></p>
             </div>
 
@@ -55,5 +56,17 @@
         </div>
     </main>
     <script type="module" src="auth.js"></script>
+    <script type="module">
+        import { auth } from "./InD/api/config/firebaseConfig.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+    
+        function redirectToProfile() {
+            onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                    window.location.href = "login.html";
+                }
+            });
+        }
+      </script>
 </body>
 </html>

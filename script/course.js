@@ -160,8 +160,8 @@ function saveCompletedCourse() {
     auth.onAuthStateChanged(async (user) => {
         if (user) {
             const course = getQueryParam('course');
-            console.log(course);
-            const courseRef = doc(db, 'user', user.uid);
+            const userRef = doc(db, 'users', user.uid); // Menggunakan 'users' bukan 'user'
+
             let updateData = {};
             if (course === 'variable') {
                 updateData = { completedvar: true, totalcompleted: increment(1) };
@@ -170,13 +170,15 @@ function saveCompletedCourse() {
             } else if (course === 'loop') {
                 updateData = { completedloop: true, totalcompleted: increment(1) };
             }
+
             try {
-                await updateDoc(courseRef, updateData);
+                await updateDoc(userRef, updateData);
             } catch (error) {
-                console.error("Error updating document: ", error.message);
+                console.error("Error updating document: ", error);
             }
         }
     });
 }
+
 
 loadQuestion();

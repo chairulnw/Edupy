@@ -93,12 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const userDoc = await getDoc(userRef);
             if (userDoc.exists()) {
                 document.getElementById('name').textContent = userDoc.data().name;
-            }
-
-            const courseRef = doc(db, 'course', user.uid);
-            const courseDoc = await getDoc(courseRef);
-            if (courseDoc.exists()) {
-                document.getElementById('lessonsCompleted').textContent = courseDoc.data().totalcompleted;
+                document.getElementById('username').textContent = userDoc.data().name;
+                document.getElementById('lessonsCompleted').textContent = userDoc.data().totalcompleted;
             }
         }
     });
