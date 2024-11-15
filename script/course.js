@@ -1,5 +1,5 @@
 import { auth, db} from "/auth.js"
-import {doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import {doc, updateDoc, increment, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // DAFTAR SOAL
 const questions1 = [
@@ -161,13 +161,15 @@ function saveCompletedCourse() {
         if (user) {
             const course = getQueryParam('course');
             const userRef = doc(db, 'users', user.uid); // Menggunakan 'users' bukan 'user'
+            const userDoc = await getDoc(userRef);
+            const userData = userDoc.data();
 
             let updateData = {};
-            if (course === 'variable') {
+            if (course === 'variable' && !userData.completedvar) {
                 updateData = { completedvar: true, totalcompleted: increment(1) };
-            } else if (course === 'conditional') {
+            } else if (course === 'conditional' && !userData.completedcond) {
                 updateData = { completedcond: true, totalcompleted: increment(1) };
-            } else if (course === 'loop') {
+            } else if (course === 'loop' && !userData.completedloop) {
                 updateData = { completedloop: true, totalcompleted: increment(1) };
             }
 

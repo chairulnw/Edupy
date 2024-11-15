@@ -14,7 +14,7 @@
     </header>
 
     <main>
-        <h1><span id="name"></span></h1>
+        <h1>Welcome, <span id="name"></span></h1>
         <p class="text">Happy learning!</p>
         <!-- <dialog id="edit">
             <h2>edit profile</h2>
@@ -29,7 +29,7 @@
         <div class="dashboard">
             <div class="user-info">
                 <img src="assets/olga-woman.svg">
-                <h1><span id="username"></span></h1>
+                <p class="detail"><span id="username"></span></p>
                 <p class="detail">Lesson completed: <span id="lessonsCompleted"></span></p>
             </div>
 
@@ -57,16 +57,17 @@
     </main>
     <script type="module" src="auth.js"></script>
     <script type="module">
-        import { auth } from "./InD/api/config/firebaseConfig.js";
+        import { auth } from "/auth.js";
         import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
     
-        function redirectToProfile() {
+        function directToLogin() {
             onAuthStateChanged(auth, (user) => {
                 if (!user) {
                     window.location.href = "login.html";
                 }
             });
         }
-      </script>
+        directToLogin();
+    </script>
 </body>
 </html>
