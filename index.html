@@ -10,18 +10,26 @@
 <body>
     <header>
         <div class="logo">Edupy</div>
-        <button id="resetButton">Reset</button>
+        <button id="logoutButton" onclick="logout()">Logout</button>
     </header>
 
     <main>
-        <h1>Welcome, <span id="userName">Chairul</span></h1>
+        <h1><span id="name"></span></h1>
         <p class="text">Happy learning!</p>
-
+        <!-- <dialog id="edit">
+            <h2>edit profile</h2>
+            <form>
+                <label for="picture">picture</label>
+                <input type="image">
+                <label for="name">username</label>
+                <input id="name">
+                <button onclick="closelogindialog()">Submit</button>
+            </form>
+        </dialog> -->
         <div class="dashboard">
             <div class="user-info">
-                <img src="assets/olga-woman.svg">
-                <p class="text">Chairul</p>
-                <p class="detail">Lesson completed: <span id="lessonsCompleted">0</span></p>
+                <h1><span id="name"></span></h1>
+                <p class="detail">Lesson completed: <span id="lessonsCompleted"></span></p>
             </div>
 
             <div class="course-info">
@@ -32,60 +40,20 @@
 
         <h2>Available Courses</h2>
         <div class="courses">
-            <a href="course1.html?course=variable" class="course-card"> 
+            <a href="course.html?course=variable" class="course-card"> 
                 <p>Variable</p>
                 <img src="assets/variable.png">
             </a>
-            <a href="course1.html?course=conditional" class="course-card"> 
+            <a href="course.html?course=conditional" class="course-card"> 
                 <p>Conditional</p>
                 <img src="assets/condition.png">
             </a>
-            <a href="course1.html?course=loop" class="course-card"> 
+            <a href="course.html?course=loop" class="course-card"> 
                 <p>Looping</p>
                 <img src="assets/loop.png">
             </a>
         </div>
     </main>
-
-    <script src="script.js"></script>
-    <script>
-    function displayCompletedLessons() {
-        let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || [];
-        document.getElementById('lessonsCompleted').textContent = completedCourses.length;
-    }
-
-    function markCompletedCourses() {
-        let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || [];
-        
-        completedCourses.forEach(courseId => {
-            let courseLink = document.querySelector(`a[href*="course=${courseId}"]`);
-            if (courseLink) {
-                courseLink.classList.add('completed');
-            }
-        });
-    }
-
-    function removeCompletedCourseMarks() {
-        const courseCards = document.querySelectorAll('.course-card');
-        courseCards.forEach(card => {
-            card.classList.remove('completed');
-        });
-    }
-
-    function reset() {
-        localStorage.removeItem('completedCourses');
-        displayCompletedLessons();
-        removeCompletedCourseMarks();
-    }
-
-    document.getElementById('resetButton').addEventListener('click', function() {
-        reset();
-    });
-
-    window.onload = function() {
-        displayCompletedLessons();
-        markCompletedCourses();
-    };
-    </script>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>

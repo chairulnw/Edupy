@@ -1,3 +1,6 @@
+import { auth, db} from "/auth.js"
+import {doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
 // DAFTAR SOAL
 const questions1 = [
     {
@@ -109,7 +112,7 @@ function loadQuestion() {
     });
 }
 
-function checkAnswer() {
+window.checkAnswer = function checkAnswer() {
     const selectedAnswer = document.querySelector('input[name="answer"]:checked').value;
     const correctAnswer = questions[currentQuestion].correctAnswer;
 
@@ -149,30 +152,31 @@ function showCompletionMessage() {
 }
 
 // Kembali ke halaman utama
-function goBack() {
+window.goBack = function goBack() {
     window.location.href = 'index.html';
 }
 
-loadQuestion();
-
-// completed course
-function markCompletedCourses() {
-    let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || [];
-    
-    completedCourses.forEach(courseId => {
-        let courseLink = document.querySelector(`a[href*="course=${courseId}"]`);
-        if (courseLink) {
-            courseLink.classList.add('completed');
+function saveCompletedCourse() {
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            const course = getQueryParam('course');
+            console.log(course);
+            const courseRef = doc(db, 'user', user.uid);
+            let updateData = {};
+            if (course === 'variable') {
+                updateData = { completedvar: true, totalcompleted: increment(1) };
+            } else if (course === 'conditional') {
+                updateData = { completedcond: true, totalcompleted: increment(1) };
+            } else if (course === 'loop') {
+                updateData = { completedloop: true, totalcompleted: increment(1) };
+            }
+            try {
+                await updateDoc(courseRef, updateData);
+            } catch (error) {
+                console.error("Error updating document: ", error.message);
+            }
         }
     });
 }
 
-function saveCompletedCourse() {
-    const courseParam = getQueryParam('course');
-    let completedCourses = JSON.parse(localStorage.getItem('completedCourses')) || [];
-
-    if (!completedCourses.includes(courseParam)) {
-        completedCourses.push(courseParam);
-        localStorage.setItem('completedCourses', JSON.stringify(completedCourses));
-    }
-}
+loadQuestion();

@@ -24,7 +24,7 @@ header {
     margin-right: auto;
 }
 
-#resetButton {
+#logoutButton {
     background-color: #0d5fa3;
     color: white;
     border: none;
@@ -35,7 +35,7 @@ header {
     margin-left: 15px;
 }
 
-#resetButton:hover {
+#logoutButton:hover {
     background-color: #094779;
 }
 
@@ -173,7 +173,7 @@ h2 {
         font-size: 1rem;
     }
 
-    #resetButton {
+    #logoutButton {
         padding: 10px 20px;
         font-size: 16px;
     }

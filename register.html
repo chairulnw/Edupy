@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edupy - Register</title>
+    <link rel="icon" type="image/x-icon" href="/assets/Ep.svg">
+    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="style/course.css">
+    <link rel="stylesheet" href="style/auth_style.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">Edupy</div>
+    </header>
+    <div class="auth-container" id="auth-container">
+        <h2>Register</h2>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+        <button id="register-button" onclick="register()">Register</button>
+        <p class="toggle-auth">Already have an account? <a id="toggle-auth-link" href="login.html">Login here</a></p>
+    </div>
+
+
+</body>
+<script type="module" src="auth.js" defer></script>
+</html>
